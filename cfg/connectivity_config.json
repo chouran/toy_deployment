@@ -1,0 +1,7 @@
+{
+    "service_info":{
+        "log_level": "DEBUG",
+        "version":"1.0",
+        "env":"dev"
+    }
+}
