@@ -1,4 +1,4 @@
-#from app.utils import common_utils as utils
+from utils import common_utils as utils
 import pickle
 
 def test_import():
