@@ -37,5 +37,3 @@ def generate_output(answer, error_msg):
 # Pre-loading the qa pipeline at service launch
 model_path = "/app/model/qa_pipeline.sav"
 qa_pipeline = pickle.load(open(model_path, 'rb'))
-#full_path = "/home/chouran/Documents/code_training/toy_deployment/app/model/qa_pipeline.sav"
-#qa_pipeline = pickle.load(open(full_path, 'rb'))
