@@ -3,8 +3,7 @@ import json
 import time
 import sys
 
-#sys.path.append("/cfg")
-#print(sys.path)
+
 with open('/app/connectivity_config.json') as f:
     config_data = json.load(f)
     
