@@ -1,4 +1,3 @@
-# Import required modules
 from question_answering import main as qa_main
 from fastapi import FastAPI
 from pydantic import BaseModel
@@ -34,21 +33,21 @@ async def answer(request_model : Request_Model):
     response = qa_main.get_answer(input)
 
     print(qa_main.utils.performance_log)
-    return response
-    #return response_handler (response)
+    #return response
+    return response_handler (response)
 
 
 # Function to handle response
 # Return log info if dev mode
+# and predictions only for prod mode
 def response_handler(response_object):
     body = response_object
     api_log = api_logger(body)
-
+    
     if service_info["env"]=="dev":
-        print('ok')
-        body.update(api_log)
-
-    return body
+        return api_log
+    else:
+        return body
 
 
 # Log service info to storage DB

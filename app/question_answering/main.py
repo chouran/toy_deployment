@@ -1,4 +1,4 @@
-from utils import common_utils as utils
+from utils import log_utils as utils
 import pickle
 
 def test_import():
@@ -15,8 +15,9 @@ def get_answer(question):
 
     return response_json
 
-#@utils.calculate_duration
+
 # Generate predictions
+@utils.calculate_duration
 def model_prediction(q, a, err):
     try:
         a = qa_pipeline(q)
@@ -24,8 +25,9 @@ def model_prediction(q, a, err):
         err = str(e)
     return a, err
 
-#@utils.calculate_duration
+
 # Generate output API response
+@utils.calculate_duration
 def generate_output(answer, error_msg):
     if answer is not None:
         output_json = {"Answer": answer}
