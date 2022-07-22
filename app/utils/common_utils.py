@@ -3,14 +3,16 @@ import json
 import time
 import sys
 
-with open('/cfg/connectivity_config.json') as f:
+#sys.path.append("/cfg")
+#print(sys.path)
+with open('/app/connectivity_config.json') as f:
     config_data = json.load(f)
     
 service_info = config_data["service_info"]
 
 performance_log = {}
 
-#Creating and Configuring Logger
+# Creating and Configuring Logger
 def console_logger(module_name):
     Log_Format = "[%(asctime)s] [%(levelname)s] ["+ module_name + "] - %(message)s"
     logging.basicConfig(stream = sys.stdout, 
@@ -21,7 +23,7 @@ def console_logger(module_name):
     return logger
 
 
-# decorator to calculate process computation duration
+# Decorator to calculate process computation time
 def calculate_duration(func):
     def inner_method(*args, **kwargs):
         begin = time.time()

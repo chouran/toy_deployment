@@ -7,6 +7,8 @@ import sys
 
 # Create FastAPI instance 
 app = FastAPI()
+service_info = qa_main.utils.service_info
+log = qa_main.utils.console_logger("api_request_processor")
 
 # Define request model 
 class Request_Model(BaseModel):
@@ -19,8 +21,8 @@ class Request_Model(BaseModel):
 def service_check():
     return {
         "QA-service-health-check": "OK",
-        # "version": service_info["version"],
-        # "environment": service_info["env"]
+        "version": service_info["version"],
+        "environment": service_info["env"]
         }
 
 
