@@ -10,7 +10,8 @@ app = FastAPI()
 
 # Define request model 
 class Request_Model(BaseModel):
-    question_and_context: dict = {}
+    context: str
+    question: str 
 
 
 # Service health check api
@@ -25,7 +26,10 @@ def service_check():
 
 @app.post("/QA/")
 async def answer(request_model : Request_Model):
-    response = qa_main.get_answer(request_model.question_and_context)
+    input = {
+        'context': request_model.context,
+        'question': request_model.question}
+    response = qa_main.get_answer(input)
     return (response)
 
 
